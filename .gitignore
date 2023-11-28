@@ -1,0 +1,11 @@
+build
+dist
+*.pyc
+*.so
+*.egg-info
+*.egg-info/*
+Lib
+Scripts
+__pycache__
+pyvenv.cfg
+*.spec
