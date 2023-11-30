@@ -17,8 +17,10 @@ Also, two way **Clipboard** sync for text!
 - Optional requirements for compiling to executable `pip install pyinstaller`
 - Run with `python ShortcutsListener.py`
 - Compile with `pyinstaller -c -i ShortcutsListener.ico -F .\ShortcutsListener.py` to get a single executable.
+  
   **OR**
-- Download the pre-compiled executable from Releases.
+  
+- Download the pre-compiled executable from [Releases page](https://github.com/shajul/ShortcutsListener/releases/latest).
   
   ### Step 2:
 - **Install Shortcut** from [RoutineHub](https://routinehub.co/shortcut/17314/). Configure the shortcut with the ip address shown in the console on PC.
