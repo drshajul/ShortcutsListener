@@ -5,7 +5,7 @@ Also, two way **Clipboard** sync for text!
 
 **Important:** Note that this is only for private Home or Personal network on Wireless LAN. **Do not** use in production or on shared or public networks, as data is transmitted via HTTP and not encrypted. 
 
-![Send2PC.png](media\Send2PC.png)
+![Send2PC.png](media/Send2PC.png)
 
 ## ## Installation and Usage
 
