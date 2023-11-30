@@ -8,8 +8,8 @@ UPLOAD_FOLDER = os.path.join(os.path.expanduser('~'), 'Downloads')
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
-def message(msg, code=200):
-    if debug: print(msg)
+def message(msg, code=200, printMessage=False):
+    if debug or printMessage: print(msg)
     return msg, code
 
 @app.route('/', methods=['POST'])
@@ -17,10 +17,21 @@ def upload_file():
     content_length = int(request.headers.get('Content-Length'))
 
     if 'clipboard' in request.headers:
-        data = request.get_data().decode('utf-8')
-        pyperclip.copy(data)
-        print('Data copied to clipboard: ' + data)
-        return message('Data copied to clipboard', 200)
+        clipboard_action = request.headers.get('clipboard')
+        match clipboard_action:
+            case 'send':
+                data = request.get_data().decode('utf-8')
+                pyperclip.copy(data)
+                return message('Data copied to clipboard', 200, printMessage=True)
+            case 'clear':
+                pyperclip.copy('')
+                return message('Clipboard cleared', 200, printMessage=True)
+            case 'receive':
+                data = pyperclip.paste()
+                print('Clipboard sent!')
+                return data, 200
+            case _:
+                return message('Invalid clipboard action', 400)
 
     if 'filename' in request.headers:
         filename = request.headers.get('filename')
