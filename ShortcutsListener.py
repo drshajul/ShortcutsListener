@@ -1,10 +1,23 @@
 from flask import Flask, request
-import os, pyperclip
+import os, pyperclip, argparse
 
 app = Flask(__name__)
 debug = False  # set to True to print debug messages
 
-UPLOAD_FOLDER = os.path.join(os.path.expanduser('~'), 'Downloads')
+# Setup command line argument parsing
+parser = argparse.ArgumentParser(description='Flask app to upload files and manage clipboard.')
+# The default value is set to None initially to check if a directory was explicitly provided
+parser.add_argument('--download-dir', type=str, help='Directory to save downloaded files.', default=None)
+args = parser.parse_args()
+
+# Determine UPLOAD_FOLDER based on whether a command line argument was provided
+if args.download_dir is None:
+    # Fallback to the Downloads folder if no directory is specified
+    UPLOAD_FOLDER = os.path.join(os.path.expanduser('~'), 'Downloads')
+else:
+    UPLOAD_FOLDER = args.download_dir
+
+# Ensure the UPLOAD_FOLDER exists
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
