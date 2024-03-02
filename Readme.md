@@ -21,10 +21,13 @@ Also, two way **Clipboard** sync for text!
 
 All selected files, photos and videos will be transfered to PC. Or you can use it from the share sheet.
 
+
 ## Notes
 
 - Note: Transfer stops as soon as iPhone screen goes off. You need to keep the screen on while you are transfering too many photos or huge videos.
 - Note: To make large amount of photo/video transfer 'Allow Sharing Large Amounts of Data' needs to be turned on from 'Settings -> Shortcuts -> Advanced' screen.
+- Note: Files are sent to ~\Downloads by default. Specify `--download-dir <directory>` when running the host to set a new one. 
+- Note: To run as a Windows service, configure with the tool [NSSM - the Non-Sucking Service Manager](http://nssm.cc/)
 
 ## Run / Compile & Run hints
 
